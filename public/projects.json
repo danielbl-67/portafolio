@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Portafolio Anterior",
+    "description": "Mi primer portafolio estático subido a GitHub Pages con mi información personal.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "link": "https://github.com/danielbl-67/danielbl-67.github.io"
+  },
+  {
+    "title": "GYMZY (PROYECTO FINAL)",
+    "description": "Aplicación para nutricionistas y entrenadores personales autónomos.",
+    "technologies": ["Java", "Spring Boot", "SQL", "Web"],
+    "link": "https://github.com/danielbl-67"
+  }
+]

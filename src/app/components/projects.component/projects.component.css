@@ -1,0 +1,134 @@
+.info-card-projects {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.info-card-projects h2 {
+  color: var(--accent-red);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CAJA DE PROYECTO CON EFECTO GLOW DISCONTINUO */
+.featured-project-box {
+  border: 1.5px dashed var(--card-border);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.01);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.featured-project-box:hover {
+  transform: scale(1.01); /* Crece sutilmente a los lados */
+  border-color: var(--accent-red); /* Cambia el borde a rojo */
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.05);
+}
+
+.featured-project-box h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.featured-project-box p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-main);
+}
+
+/* BOTÓN DE REPOSITORIO INTERACTIVO */
+.repo-btn {
+  display: inline-block;
+  background-color: var(--accent-red);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.repo-btn:hover {
+  transform: translateY(-2px);
+  background-color: #e60000; /* Un rojo un pelo más oscuro al pisar */
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+.repo-btn:active {
+  transform: translateY(0);
+}
+
+/* TARJETA DE CONTACTO REVISADA (Márgenes perfectos) */
+.contact-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 5px;
+}
+
+.contact-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  color: var(--accent-red);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.contact-val {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.contact-val:hover {
+  color: var(--accent-red);
+}
