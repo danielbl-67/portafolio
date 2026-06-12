@@ -1,0 +1,99 @@
+.hero-section {
+  padding: 2rem 0 1.5rem;
+  width: 100%;
+  max-width: 100%; 
+}
+
+.hero-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: #f8fafc;
+}
+
+.highlight {
+  color: #38bdf8;
+}
+
+.subtitle {
+  margin: 0.3rem 0;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  margin: 1.5rem 0 2rem;
+}
+
+.info-card-projects {
+  background: rgba(15, 23, 42, 0.8);
+  border: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 100%; 
+}
+
+.info-card-projects h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #f8fafc;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.featured-project-box {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-project-box h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  color: #e2e8f0;
+}
+
+.featured-project-box p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.tag {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.repo-btn {
+  display: inline-block;
+  background: #38bdf8;
+  color: #082f49;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.repo-btn:hover {
+  transform: translateY(-1px);
+}

@@ -1,45 +1,379 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-:root {
-  --bg-color: #0d0e12;       
-  --card-bg: #18191e;        
-  --accent-red: #1100ff;     
-  --accent-red-glow: rgba(0, 89, 255, 0.15);
-  --text-main: #ffffff;      
-  --text-muted: #9ca3af;     
-  --card-border: #262833;    
-}
-
-* {
+/* ==========================================================================
+   1. RESETEO GLOBAL Y LIMPIEZA DE BORDES FANTASMA
+   ========================================================================== */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none !important;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
-  padding: 40px 20px;
+/* Forzamos a que absolutamente ningún contenedor dibuje líneas blancas */
+fieldset, main, section, article, div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-/* Animación de entrada suave para todo el portafolio */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #0f172a !important; /* Tu color azul oscuro */
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden; /* Evita scrolls horizontales raros */
 }
 
+/* ==========================================================================
+   2. CONTENEDORES PRINCIPALES DE LA APLICACIÓN (LAYOUT)
+   ========================================================================== */
 .portfolio-container {
-  max-width: 750px;          
-  margin: 0 auto;
+  width: 100% !important;
+  min-height: 100vh;
+  background-color: #0f172a;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  animation: fadeIn 0.6s ease-out forwards; /* Aplica la animación */
+  position: relative;
+  overflow: hidden;
+}
+
+/* El contenido del portafolio (menú y páginas) flota por encima del vídeo */
+.portfolio-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Caja elástica que centra el contenido en pantallas grandes */
+.container {
+  width: 100% !important;
+  max-width: 1200px !important; 
+  margin: 0 auto !important;   
+  padding: 2rem 24px !important; 
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (RESPONSIVA Y FLUIDA)
+   ========================================================================== */
+.navbar {
+  width: 100% !important;
+  background-color: #0b111e; /* Un tono ligeramente más oscuro */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1) !important;
+  box-sizing: border-box;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 24px;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active-link {
+  color: #38bdf8;
+}
+
+/* ==========================================================================
+   4. SECCIÓN BIENVENIDA (HERO SECTION)
+   ========================================================================== */
+.hero-section {
+  padding: 2rem 0 1.5rem;
+  width: 100%;
+  max-width: 100%; 
+}
+
+.hero-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: #f8fafc;
+}
+
+.highlight {
+  color: #38bdf8;
+}
+
+.subtitle {
+  margin: 0.3rem 0;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  margin: 1.5rem 0 2rem;
+}
+
+/* ==========================================================================
+   5. DISEÑO DE TARJETAS PREMIUM (CARDS TRANS-LÚCIDAS)
+   ========================================================================== */
+.profile-card, 
+.tech-mini-card, 
+.repos-section-card, 
+.info-card-projects {
+  background: rgba(30, 41, 59, 0.65) !important; /* Fondo translúcido para el vídeo */
+  border: 1px solid rgba(56, 189, 248, 0.15) !important; /* Tu borde sutil de neón azul */
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important; /* Sombreado oscuro limpio */
+  backdrop-filter: blur(8px); /* Efecto cristal esmerilado */
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.card-header h2, .main-card-header h2, .repos-section-card h2, .info-card-projects h2 {
+  font-size: 1.8rem;
+  color: #f8fafc;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+  padding-bottom: 0.5rem;
+}
+
+.bio-text {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* ==========================================================================
+   6. BOTONES, ENLACES Y BADGES (CON MEJOR CONTRASTE)
+   ========================================================================== */
+.personal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.badge, .badge-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+}
+
+.badge-btn {
+  background: rgba(56, 189, 248, 0.1) !important;
+  color: #38bdf8 !important; /* Forzamos el azul claro brillante */
+  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+  transition: all 0.2s ease;
+}
+
+.badge-btn:hover {
+  background: #38bdf8 !important;
+  color: #0f172a !important; /* El texto se vuelve oscuro al iluminarse el botón */
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. REJILLAS ADAPTABLES (GRID DE PROYECTOS Y TECNOLOGÍAS)
+   ========================================================================== */
+.projects-list,
+.tech-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Automático en PC y apilado en móvil */
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.featured-project-box {
+  background: #111827;
+  border: 1px solid #1f2937 !important;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-project-box h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  color: #e2e8f0;
+}
+
+.featured-project-box p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.tag {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.repo-btn {
+  display: inline-block;
+  background: #38bdf8;
+  color: #082f49;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.repo-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilos de la lista de Tecnologías */
+.tech-mini-card {
+  margin-bottom: 0; /* Anula el de las tarjetas estándar para la rejilla */
+}
+
+.tech-mini-card h3 {
+  color: #38bdf8;
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.tech-mini-card ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+.tech-mini-card li {
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Tarjeta diferencial para SMR */
+.bonus-card {
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.bonus-card h3 {
+  color: #10b981;
+}
+
+.learning-tag {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.repo-link-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.repo-card-content h3 {
+  color: #e2e8f0;
+  margin-top: 0;
+}
+
+.repo-card-content p {
+  color: #94a3b8;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   8. COMPONENTE VIDEO DE FONDO (YOUTUBE BASE)
+   ========================================================================== */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+.video-background youtube-player {
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+
+::ng-deep .video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  transform: translate(-50%, -50%);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.68); /* Añadido un tinte oscuro equilibrado */
+  z-index: -1;
+}
+
+/* ==========================================================================
+   9. ANIMACIONES SUAVES
+   ========================================================================== */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

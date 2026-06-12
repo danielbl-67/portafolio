@@ -1,7 +1,11 @@
 <div class="portfolio-container">
-  <!-- Cabecera, Sobre mí y Enlaces de recursos -->
-  <app-about></app-about>
 
-  <!-- Proyectos dinámicos vía HTTP y Caja de contacto -->
-  <app-projects></app-projects>
+  <div class="portfolio-content">
+    <app-barranavegacion></app-barranavegacion>
+
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
 </div>

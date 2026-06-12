@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { AboutComponent } from './components/about.component/about.component';
-import { ProjectsComponent } from './components/projects.component/projects.component';
+import { RouterOutlet } from '@angular/router';
+import { BarranavegacionComponent } from './componentes/barranavegacion.component/barranavegacion.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AboutComponent, ProjectsComponent],
+  
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
+  imports: [RouterOutlet, BarranavegacionComponent],
 })
 export class AppComponent {
   title = 'portafolio';

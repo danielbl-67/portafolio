@@ -1,0 +1,53 @@
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (CENTRADA)
+   ========================================================================== */
+.navbar {
+  width: 100% !important;
+  background-color: #0b111e; 
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1) !important;
+  box-sizing: border-box;
+  padding: 0.8rem 0;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto; 
+  display: flex;
+  flex-direction: column; /* Apila el logo arriba y los enlaces abajo */
+  justify-content: center;
+  align-items: center;    /* Centrado horizontal de todo el bloque */
+  gap: 0.8rem;            
+  padding: 1.2rem 24px;
+}
+
+/* .nav-logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+  text-align: center;     
+} */
+
+.nav-links {
+  display: flex;
+  justify-content: center; /* Centra los botones de izquierda a derecha */
+  align-items: center;
+  flex-wrap: wrap;         /* Permite que los botones bajen de línea en móvil */
+  gap: 2rem;               
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;     
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active-link {
+  color: #38bdf8;
+}
