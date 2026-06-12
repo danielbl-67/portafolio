@@ -1,0 +1,45 @@
+.profile-layout {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2.5rem !important;
+  align-items: center !important;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.profile-photo-container {
+  flex-shrink: 0 !important;
+  width: 200px;
+  height: 200px;
+}
+
+.profile-photo {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 28px !important;
+  border: 3px solid rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+}
+
+.card-body {
+  flex-grow: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 650px) {
+  .profile-layout {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+  }
+
+  .profile-photo-container,
+  .profile-photo {
+    width: 150px !important;
+    height: 150px !important;
+  }
+}
