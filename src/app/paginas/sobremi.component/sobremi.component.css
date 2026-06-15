@@ -1,46 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:host {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: block;
+  color: #f3f4f6;
+  padding: 2rem 0;
+}
+
+/* --- CONTENEDOR DE LA SECCIÓN --- */
+.card-layout {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  background-color: #0b0f19;
+  border: 1px solid #1f293d;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- ENCABEZADO --- */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #1e2530;
+  padding-bottom: 1rem;
+}
+
+.header-icon {
+  color: #818cf8;
+}
+
+.card-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  margin: 0;
+}
+
+/* --- DISTRIBUCIÓN HORIZONTAL (FOTO + BIO) --- */
 .profile-layout {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 2.5rem !important;
-  align-items: center !important;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  align-items: center;
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   width: 100%;
 }
 
 .profile-photo-container {
-  flex-shrink: 0 !important;
+  flex-shrink: 0;
   width: 200px;
   height: 200px;
 }
 
 .profile-photo {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: cover !important;
-  border-radius: 28px !important;
-  border: 3px solid rgba(56, 189, 248, 0.5) !important;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.08);
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover .profile-photo {
+  border-color: rgba(56, 189, 248, 0.6);
   box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
 }
 
+/* --- CUERPO DE TEXTO --- */
 .card-body {
   flex-grow: 1;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
+.bio-text {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 1.25rem 0;
+}
+
+.bio-text:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-text {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* --- PIE DE TARJETA (BADGES) --- */
+.card-footer {
+  border-top: 1px solid #1e2530;
+  padding-top: 2rem;
+}
+
+.footer-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  margin-bottom: 1.25rem;
+}
+
+.footer-icon {
+  color: #818cf8;
+}
+
+.card-footer h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.personal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Badge fija de ubicación */
+.badge.geo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #94a3b8;
+  border: 1px solid #1f293d;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.badge.geo svg {
+  color: #ef4444; /* Rojo sutil para el mapa */
+}
+
+/* Botones interactivos de contacto */
+.badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #f3f4f6;
+  border: 1px solid #1f293d;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.badge-btn svg {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+/* Enfoques estéticos individuales en los hovers */
+.badge-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.badge-btn:hover svg {
+  color: #38bdf8;
+}
+
+/* Estilo destacado especial para la descarga del CV */
+.badge-btn.download {
+  background-color: #f3f4f6;
+  color: #030712;
+  border-color: #f3f4f6;
+}
+
+.badge-btn.download svg {
+  color: #030712;
+}
+
+.badge-btn.download:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #030712;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* --- MEDIA QUERY RESPONSIVA --- */
 @media (max-width: 650px) {
   .profile-layout {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 1.5rem !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .profile-photo-container,
   .profile-photo {
-    width: 150px !important;
-    height: 150px !important;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .subtitle {
+    justify-content: center;
   }
 }
-

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BarranavegacionComponent } from './componentes/barranavegacion.component/barranavegacion.component';
+import { ContactoComponent } from "./paginas/contacto/contacto";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { BarranavegacionComponent } from './componentes/barranavegacion.componen
   
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
-  imports: [RouterOutlet, BarranavegacionComponent],
+  imports: [RouterOutlet, BarranavegacionComponent, ContactoComponent],
 })
 export class AppComponent {
   title = 'portafolio';

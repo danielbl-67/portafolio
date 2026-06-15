@@ -1,25 +1,47 @@
 import { Component } from '@angular/core';
 
+interface Proyecto {
+  title: string;
+  subtitle: string;
+  description: string;
+  technologies: string[];
+  link: string;
+  demoLink?: string;
+  tipoIcono: 'movil' | 'barber' | 'codigo' | 'web';
+}
+
 @Component({
   selector: 'app-inicio',
-  standalone: true,
-  imports: [],
+
   templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css',
+  styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
-  projectsList = [
+  projectsList: Proyecto[] = [
     {
-      title: 'Portafolio Anterior',
-      description: 'Mi primer portafolio estático subido a GitHub Pages con mi información personal.',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      link: 'https://danielbl-67.github.io',
+      title: 'GYMZY',
+      subtitle: 'PROYECTO FINAL',
+      description: 'Aplicación móvil enfocada al sector fitness. Ofrece herramientas de gestión avanzadas tanto para usuarios como para entrenadores personales y nutricionistas autónomos.',
+      technologies: ['Java', 'Spring Boot', 'Android Studio', 'Firebase'],
+      link: 'https://github.com/danielbl-67/gymzy',
+      tipoIcono: 'movil'
     },
     {
-      title: 'GYMZY (PROYECTO FINAL)',
-      description: 'Aplicación movil para cualquier usuario y ayuda para los nutricionistas y entrenadores personales autónomos.',
-      technologies: ['Java', 'Spring Boot', 'SQL(FireBase)', 'Movil(Android)'],
-      link: 'https://github.com/danielbl-67',
+      title: 'Peluquería Daniel',
+      subtitle: 'GESTIÓN DE SERVICIOS',
+      description: 'Plataforma completa para la reserva de citas en tiempo real, administración de agendas y optimización de catálogos para salones de estética.',
+      technologies: ['Java', 'Spring Boot', 'H2 Database', 'Web'],
+      link: 'https://github.com/danielbl-67/peluqueria',
+      demoLink: 'https://peluqueria-daniel.vercel.app',
+      tipoIcono: 'barber'
+    },
+    {
+      title: 'REAPER BOT',
+      subtitle: 'ARQUITECTURA & LOGIC',
+      description: 'Módulo backend centrado en lógica pura y patrones de diseño multiplataforma estructurados bajo los estándares de DAM.',
+      technologies: ['Java Core', 'Design Patterns', 'Multiplatform'],
+      link: 'https://github.com/danielbl-67/reaper',
+      tipoIcono: 'codigo'
     },
   ];
 }
