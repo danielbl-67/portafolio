@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
 
 /* Contenedor principal de la barra (Fijo en la parte superior) */
 .navbar {
+
   font-family: 'Plus Jakarta Sans', sans-serif;
   position: sticky; 
   top: 0; 
