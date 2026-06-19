@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http'; // 1. Importa el módulo HTTP
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [FormsModule, HttpClientModule], // 2. Añade HttpClientModule aquí
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './contacto.html',
   styleUrls: ['./contacto.css']
 })
@@ -19,13 +19,12 @@ export class ContactoComponent implements OnInit {
 
   enviando: boolean = false;
   enviadoExito: boolean = false;
-  currentYear: number = 2026;
+  anioActual: number = 2026;
 
-  // 3. Inyecta el cliente HTTP en el constructor
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.currentYear = new Date().getFullYear();
+    this.anioActual = new Date().getFullYear();
   }
 
   enviarMensaje() {

@@ -1,11 +1,15 @@
 <div class="portfolio-container">
 
   <div class="portfolio-content">
+    <!-- Barra superior de navegación entre páginas -->
     <app-barranavegacion></app-barranavegacion>
 
+    <!-- Contenido principal que cambia según la ruta -->
     <main class="container">
       <router-outlet></router-outlet>
     </main>
   </div>
-    <app-contacto></app-contacto>
+
+  <!-- Pie de página con formulario y datos de contacto -->
+  <app-contacto></app-contacto>
 </div>

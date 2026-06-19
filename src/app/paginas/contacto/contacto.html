@@ -9,7 +9,7 @@
       
       <p class="contacto-subtitle">¿Tienes alguna propuesta de proyecto, vacante o pregunta? Elige tu método preferido o escríbeme directamente abajo.</p>
 
-      <!-- 🟢 NUEVA SECCIÓN: MÉTODOS DE CONTACTO RÁPIDO -->
+      <!-- Accesos rápidos para contactar sin usar el formulario -->
       <div class="quick-contact-channels">
         <a href="https://wa.me/34638676954?text=¡Hola,%20Daniel!%20He%20visto%20tu%20portafolio%20y%20me%20gustaría%20hablar%20contigo." 
            target="_blank" 
@@ -25,12 +25,12 @@
         </a>
       </div>
 
-      <!-- SEPARADOR INTERNO SUTIL -->
+      <!-- Separador visual entre accesos rápidos y formulario -->
       <div class="inner-divider">
         <span>o usa el formulario</span>
       </div>
 
-      <!-- FORMULARIO ORIGINAL -->
+      <!-- Formulario principal de contacto -->
       <form (ngSubmit)="enviarMensaje()" #formulario="ngForm" class="contacto-form">
         
         <div class="form-grid">
@@ -83,7 +83,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="copyright">© {{ currentYear }} Daniel Burdallo. Diseñado con Angular.</p>
+      <p class="copyright">© {{ anioActual }} Daniel Burdallo. Diseñado con Angular.</p>
       
       <div class="social-links">
         <a href="https://github.com/danielbl-67" target="_blank" class="social-icon-btn" title="GitHub">

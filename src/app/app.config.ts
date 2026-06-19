@@ -8,6 +8,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient() // <-- 2. REGISTRAR AQUÍ
+    // Cliente HTTP global para formularios y peticiones salientes.
+    provideHttpClient()
   ]
 };

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
-
 
 :host {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -14,7 +12,7 @@
   margin: 0 auto;
 }
 
-/* --- CABECERA PRINCIPAL --- */
+/* Cabecera principal de la sección de tecnologías */
 .main-card-header {
   margin-bottom: 3rem;
   border-bottom: 1px solid #1e2530;
@@ -47,7 +45,7 @@
   padding-bottom: 1rem;
 }
 
-/* --- GRID DE TARJETAS RESPONSIVO --- */
+/* Rejilla adaptable de tarjetas técnicas */
 .tech-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -55,7 +53,7 @@
   width: 100%;
 }
 
-/* --- ESTILO DE MINI TARJETA TÉCNICA --- */
+/* Tarjeta base de cada bloque técnico */
 .tech-mini-card {
   background-color: #0b0f19;
   border: 1px solid #1f293d;
@@ -68,7 +66,7 @@
   flex-direction: column;
 }
 
-/* Efecto hover suave coordinado con tu porfolio */
+/* Efecto hover suave coordinado con el porfolio */
 .tech-mini-card:hover {
   transform: translateY(-3px);
   border-color: rgba(56, 189, 248, 0.4);
@@ -96,7 +94,7 @@
   letter-spacing: -0.01em;
 }
 
-/* --- CONTENEDOR FLUIDO HORIZONTAL DE PILLS (En vez de <ul>) --- */
+/* Contenedor flexible de etiquetas técnicas */
 .tech-pills-container {
   display: flex;
   flex-wrap: wrap;
@@ -114,14 +112,14 @@
   transition: all 0.2s ease;
 }
 
-/* Resalte sutil cuando se pasa el ratón por encima de una tecnología */
+/* Resalte sutil al pasar el ratón por una tecnología */
 .tech-pill:hover {
   background: rgba(56, 189, 248, 0.05);
   color: #38bdf8;
   border-color: rgba(56, 189, 248, 0.2);
 }
 
-/* Variante estética opcional para la tarjeta SMR */
+/* Variante estética para la tarjeta de SMR */
 .bonus-card {
   border-color: rgba(129, 140, 248, 0.15);
 }
