@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-barranavegacion',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [CommonModule],
   templateUrl: './barranavegacion.component.html',
-  styleUrl: './barranavegacion.component.css',
+  styleUrls: ['./barranavegacion.component.css']
 })
-export class BarranavegacionComponent {}
+export class BarranavegacionComponent {
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
+}

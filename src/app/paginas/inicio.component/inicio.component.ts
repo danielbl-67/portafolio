@@ -39,13 +39,9 @@ interface Proyecto {
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
-  // Bloque visible en la sección de enfoque.
   bloqueEnfoqueActivo: BloqueEnfoque = 'frontend';
-
-  // Filtro activo para mostrar todos los proyectos o solo un estado concreto.
   filtroActivo: FiltroProyecto = 'todos';
 
-  // Alternador visual entre la parte Frontend y Backend.
   bloquesEnfoque: BloqueEnfoqueContenido[] = [
     {
       value: 'frontend',
@@ -99,7 +95,6 @@ export class InicioComponent {
     }
   ];
 
-  // Botones del panel de filtrado que aparecen encima del listado.
   filtrosProyectos: { value: FiltroProyecto; label: string }[] = [
     { value: 'todos', label: 'Todos' },
     { value: 'terminado', label: 'Terminados' },
@@ -107,19 +102,17 @@ export class InicioComponent {
     { value: 'empezado', label: 'Empezados' }
   ];
 
-  // Texto visible para cada estado de proyecto.
   readonly etiquetasEstado: Record<EstadoProyecto, string> = {
     empezado: 'Empezado',
     'en-proceso': 'En proceso',
     terminado: 'Terminado'
   };
 
-  // Catálogo principal de proyectos mostrado en la portada.
   listaProyectos: Proyecto[] = [
     {
       title: 'GYMZY',
-      subtitle: 'PROYECTO FINAL(DAM)',
-      description: 'Aplicacion movil enfocada al sector fitness con herramientas para usuarios, entrenadores personales y nutricionistas autonomos.',
+      subtitle: 'PROYECTO FINAL (DAM)',
+      description: 'Aplicación móvil enfocada al sector fitness con herramientas para usuarios, entrenadores personales y nutricionistas autónomos.',
       technologies: ['Java', 'Spring Boot', 'Android Studio', 'Firebase'],
       enlaceRepositorio: 'https://github.com/danielbl-67/gymzy',
       tipoIcono: 'movil',
@@ -127,8 +120,8 @@ export class InicioComponent {
       anio: '2026'
     },
     {
-      title: 'PELUQUERIA DANIEL',
-      subtitle: 'GESTION DE SERVICIOS(Prueba de concepto)',
+      title: 'PELUQUERÍA DANIEL',
+      subtitle: 'GESTIÓN DE SERVICIOS (Prueba de concepto)',
       description: 'Plataforma para reservar citas en tiempo real, administrar agendas y organizar servicios para peluquerías.',
       technologies: ['Java', 'Spring Boot', 'H2 Database', 'Web'],
       enlaceRepositorio: 'https://github.com/danielbl-67/peluqueria',
@@ -139,9 +132,9 @@ export class InicioComponent {
     },
     {
       title: 'REAPER BOT',
-      subtitle: 'ARQUITECTURA Y LOGICA DE BOT',
-      description: 'Modulo backend centrado en logica pura y patrones de diseno multiplataforma estructurados bajo estandares de DAM.',
-      technologies: ['Java', 'Node.js','Bot', 'Discord'],
+      subtitle: 'ARQUITECTURA Y LÓGICA DE BOT',
+      description: 'Módulo backend centrado en lógica pura y patrones de diseño multiplataforma estructurados bajo estándares de DAM.',
+      technologies: ['Java', 'Node.js', 'Bot', 'Discord'],
       enlaceRepositorio: 'https://github.com/danielbl-67/reaper',
       tipoIcono: 'codigo',
       estado: 'empezado',
@@ -153,7 +146,6 @@ export class InicioComponent {
     if (this.filtroActivo === 'todos') {
       return this.listaProyectos;
     }
-
     return this.listaProyectos.filter((proyecto) => proyecto.estado === this.filtroActivo);
   }
 
@@ -169,7 +161,6 @@ export class InicioComponent {
     if (filtro === 'todos') {
       return this.listaProyectos.length;
     }
-
     return this.listaProyectos.filter((proyecto) => proyecto.estado === filtro).length;
   }
 

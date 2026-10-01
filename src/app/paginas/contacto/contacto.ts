@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contacto.html',
   styleUrls: ['./contacto.css']
 })
 export class ContactoComponent implements OnInit {
+  private http = inject(HttpClient);
+
   datosContacto = {
     nombre: '',
     email: '',
@@ -21,20 +24,22 @@ export class ContactoComponent implements OnInit {
   enviadoExito: boolean = false;
   anioActual: number = 2026;
 
-  constructor(private http: HttpClient) {}
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.anioActual = new Date().getFullYear();
   }
 
-  enviarMensaje() {
+  enviarMensaje(): void {
+    if (!this.datosContacto.nombre || !this.datosContacto.email) {
+      return;
+    }
+
     this.enviando = true;
 
     const payload = {
       access_key: 'd21208cb-ac0b-4ac9-82e9-9322d35b63c1',
       name: this.datosContacto.nombre,
       email: this.datosContacto.email,
-      subject: `Portafolio: ${this.datosContacto.asunto}`,
+      subject: `Portafolio: ${this.datosContacto.asunto || 'Nuevo Contacto'}`,
       message: this.datosContacto.mensaje
     };
 
@@ -50,7 +55,7 @@ export class ContactoComponent implements OnInit {
           mensaje: ''
         };
 
-        setTimeout(() => this.enviadoExito = false, 5000);
+        setTimeout(() => (this.enviadoExito = false), 5000);
       },
       error: (err) => {
         this.enviando = false;
@@ -59,5 +64,4 @@ export class ContactoComponent implements OnInit {
       }
     });
   }
-
 }

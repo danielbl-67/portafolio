@@ -6,7 +6,7 @@ import { ContactoComponent } from './paginas/contacto/contacto';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent }, 
-  { path: 'sobre-me', component: SobremiComponent },
+  { path: 'sobremi', component: SobremiComponent },
   { path: 'tecnologias', component: TecnologiasComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: '**', redirectTo: '' }

@@ -1,15 +1,21 @@
 <div class="portfolio-container">
+  <app-barranavegacion></app-barranavegacion>
 
-  <div class="portfolio-content">
-    <!-- Barra superior de navegación entre páginas -->
-    <app-barranavegacion></app-barranavegacion>
+  <main class="container">
+    <section id="inicio">
+      <app-inicio></app-inicio>
+    </section>
 
-    <!-- Contenido principal que cambia según la ruta -->
-    <main class="container">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+    <section id="sobremi">
+      <app-sobremi></app-sobremi>
+    </section>
 
-  <!-- Pie de página con formulario y datos de contacto -->
-  <app-contacto></app-contacto>
+    <section id="tecnologias">
+      <app-tecnologias></app-tecnologias>
+    </section>
+
+    <section id="contacto">
+      <app-contacto></app-contacto>
+    </section>
+  </main>
 </div>
