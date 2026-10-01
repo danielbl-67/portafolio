@@ -1,185 +1,151 @@
-<!-- Bloque principal de presentación -->
-<header class="hero-section">
-  <div class="hero-glow"></div>
+<div class="ambient-glow"></div>
 
+<!-- 1. Hero Principal -->
+<header class="card-layout hero-card animate-fade-in">
   <div class="status-badge">
     <span class="pulse-dot"></span>
-    Disponible para proyectos
+    <span>Disponible para nuevos proyectos</span>
   </div>
 
-  <h1><span class="hero-greeting">Hola, soy</span><span class="hero-name">Daniel Burdallo</span></h1>
+  <h1 class="hero-title">
+    <span class="hero-greeting">Hola, soy</span>
+    <span class="hero-name">Daniel Burdallo</span>
+  </h1>
 
   <p class="hero-copy">
-    Estudiante de Desarrollo de Aplicaciones Multiplataforma centrado en crear
-    aplicaciones web, moviles y de escritorio con una experiencia clara y codigo mantenible.
+    Desarrollador de Aplicaciones Multiplataforma. Construyo productos web funcionales, aplicaciones móviles nativas y backends conectados con bases de datos.
   </p>
 
-  <div class="hero-details" aria-label="Perfil profesional">
-    <span class="hero-pill">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hero-icon"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-      DAM
-    </span>
-    <span class="hero-pill">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hero-icon"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      Web y multiplataforma
-    </span>
-    <span class="hero-pill">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hero-icon"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/></svg>
-      Aprendizaje continuo
-    </span>
-  </div>
-
   <div class="hero-actions">
-    <a href="#projects" class="primary-action">
+    <a href="#proyectos" class="primary-btn">
       <span>Ver proyectos</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
     </a>
-    <a href="/_CV_Burdallo_Daniel.pdf" target="_blank" class="secondary-action">
+    <a href="CV_Burdallo_Daniel.pdf" target="_blank" class="secondary-btn">
       <span>Descargar CV</span>
     </a>
   </div>
 </header>
 
-<!-- Bloque de enfoque y forma de trabajo -->
-<section class="approach-section" aria-labelledby="approach-title">
-  <div class="section-heading">
+<!-- 2. Sobre mí -->
+<app-sobremi></app-sobremi>
+
+<!-- 3. Habilidades y Metodología -->
+<app-tecnologias></app-tecnologias>
+
+<!-- 4. Proyectos Destacados -->
+<section id="proyectos" class="card-layout projects-card animate-fade-in">
+  <div class="projects-top">
     <div class="section-title-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><path d="M12 3v18"/><path d="m18 9-6-6-6 6"/><path d="M6 15l6 6 6-6"/></svg>
-      <h2 id="approach-title">Mi enfoque</h2>
-    </div>
-  </div>
-
-  <div class="approach-layout">
-    <div class="approach-intro">
-      <span class="approach-kicker">Cómo construyo</span>
-      <h3>Equilibrio entre una experiencia visual sólida y una base técnica fiable.</h3>
-      <p>
-        Vengo del mundo de DAM, así que me importa tanto la arquitectura y los datos como la sensación final del producto. Para mí, un buen proyecto combina una interfaz clara con una base técnica ordenada; por eso separo mi enfoque entre Frontend y Backend para mostrar cada parte con intención.
-      </p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="header-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <h2>Proyectos</h2>
     </div>
 
-    <div class="approach-panel">
-      <div class="approach-tabs" role="tablist" aria-label="Seleccionar enfoque">
-        @for (bloque of bloquesEnfoque; track bloque.value) {
-          <button
-            type="button"
-            class="approach-tab"
-            [class.active]="bloqueEnfoqueActivo === bloque.value"
-            [attr.aria-pressed]="bloqueEnfoqueActivo === bloque.value"
-            (click)="establecerBloqueEnfoque(bloque.value)"
-          >
-            <span>{{ bloque.label }}</span>
-          </button>
-        }
-      </div>
-
-      @let bloqueActivo = obtenerBloqueEnfoqueActivo();
-      <div class="approach-content" [class.frontend]="bloqueActivo.value === 'frontend'" [class.backend]="bloqueActivo.value === 'backend'">
-        <span class="approach-kicker">{{ bloqueActivo.kicker }}</span>
-        <h3>{{ bloqueActivo.tituloPrincipal }}</h3>
-        <p class="approach-summary">{{ bloqueActivo.descripcionPrincipal }}</p>
-
-        <div class="approach-cards">
-          @for (tarjeta of bloqueActivo.tarjetas; track tarjeta.titulo) {
-            <article class="approach-card">
-              <div class="approach-icon">
-                <span></span>
-              </div>
-              <div>
-                <h4>{{ tarjeta.titulo }}</h4>
-                <p>{{ tarjeta.descripcion }}</p>
-              </div>
-            </article>
-          }
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Bloque de proyectos destacados -->
-<section id="projects" class="info-card-projects" aria-labelledby="projects-title">
-  <div class="projects-header">
-    <div class="section-heading">
-      <div class="section-title-wrapper">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polygon points="2 17 12 22 22 17"/><polygon points="2 12 12 17 22 12"/></svg>
-        <h2 id="projects-title">Proyectos</h2>
-      </div>
-    </div>
-
-    <div class="project-filters" aria-label="Filtrar proyectos por estado">
+    <div class="filter-group">
       @for (filter of filtrosProyectos; track filter.value) {
-        <button type="button" class="filter-btn" [class.active]="filtroActivo === filter.value" (click)="establecerFiltroProyecto(filter.value)">
+        <button 
+          type="button" 
+          class="filter-pill"
+          [class.active]="filtroActivo() === filter.value"
+          (click)="establecerFiltro(filter.value)"
+        >
           <span>{{ filter.label }}</span>
-          <strong>{{ obtenerCantidadEstado(filter.value) }}</strong>
+          <span class="count-tag">{{ obtenerCantidad(filter.value) }}</span>
         </button>
       }
     </div>
   </div>
 
   <div class="projects-list">
-    @for (project of proyectosFiltrados; track project.title) {
-      <article class="featured-project-box" [class]="'featured-project-box status-' + project.estado">
-        <div class="card-top">
-          <div class="project-identity">
-            <div class="icon-wrapper">
-              @switch (project.tipoIcono) {
-                @case ('movil') {
-                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                }
-                @case ('barber') {
-                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="9.8" x2="20" y1="8.2" y2="15"/><line x1="9.8" x2="20" y1="15.8" y2="9"/></svg>
-                }
-                @case ('codigo') {
-                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-                }
-                @case ('web') {
-                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M2 10h20"/></svg>
-                }
+    @for (project of proyectosFiltrados(); track project.title) {
+      <article class="project-box" [class]="'border-' + project.estado">
+        
+        <div class="project-body-layout" [class.has-preview]="project.enlaceDemo">
+          
+          <!-- Columna Izquierda: Información -->
+          <div class="project-info-col">
+            <header class="project-box-header">
+              <div class="project-identity">
+                <span class="project-cat">{{ project.subtitle }}</span>
+                <h3>{{ project.title }}</h3>
+              </div>
+              
+              @if (!project.enlaceDemo) {
+                <span class="status-badge-chip" [class]="project.estado">
+                  <span class="status-dot"></span>
+                  {{ project.estado === 'produccion' ? 'Producción' : 'En desarrollo' }}
+                </span>
+              }
+            </header>
+
+            <p class="project-description">{{ project.description }}</p>
+
+            <div class="tech-pills">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
               }
             </div>
-            <div>
-              <span class="card-subtitle">{{ project.subtitle }}</span>
-              <h3>{{ project.title }}</h3>
+
+            <div class="project-actions">
+              @if (project.enlaceDemo) {
+                <a [href]="project.enlaceDemo" target="_blank" rel="noopener noreferrer" class="link-demo">
+                  <span>Visitar web</span>
+                </a>
+              }
+              <a [href]="project.enlaceRepositorio" target="_blank" rel="noopener noreferrer" class="link-repo">
+                <span>Repositorio</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
             </div>
           </div>
 
-          <span class="status-chip" [class]="'status-chip ' + project.estado">
-            <span></span>
-            {{ obtenerEtiquetaEstado(project.estado) }}
-          </span>
-        </div>
+          <!-- Columna Derecha: Preview Web (Solo si tiene demo) -->
+          @if (project.enlaceDemo) {
+            <div class="project-preview-col">
+              <div class="preview-header-badge">
+                <span class="status-badge-chip" [class]="project.estado">
+                  <span class="status-dot"></span>
+                  {{ project.estado === 'produccion' ? 'Producción' : 'En desarrollo' }}
+                </span>
+              </div>
 
-        <p class="project-description">{{ project.description }}</p>
-
-        <div class="project-meta">
-          <span>{{ project.anio }}</span>
-          <span>{{ project.technologies.length }} tecnologias</span>
-        </div>
-
-        <div class="card-footer">
-          <div class="tech-tags">
-            @for (tech of project.technologies; track tech) {
-              <span class="tag">{{ tech }}</span>
-            }
-          </div>
-
-          <div class="card-actions">
-            @if (project.enlaceDemo) {
-              <a [href]="project.enlaceDemo" target="_blank" class="demo-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="globe-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                <span>Visitar web</span>
+              <a [href]="project.enlaceDemo" target="_blank" rel="noopener noreferrer" class="browser-window">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span>burdallo.dev/demo</span>
+                  </div>
+                </div>
+                
+                <div class="browser-screen">
+                  <div class="preview-viewport">
+                    <div class="simulated-hero">
+                      <div class="sim-line short"></div>
+                      <div class="sim-line long"></div>
+                      <div class="sim-btn"></div>
+                    </div>
+                  </div>
+                  <div class="preview-overlay">
+                    <span class="preview-btn-hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      Previsualizar
+                    </span>
+                  </div>
+                </div>
               </a>
-            }
+            </div>
+          }
 
-            <a [href]="project.enlaceRepositorio" target="_blank" [class.secondary-repo-btn]="project.enlaceDemo" [class.repo-btn]="!project.enlaceDemo">
-              <span>Repositorio</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
         </div>
-        
       </article>
     }
   </div>
 </section>
+
+<!-- 5. Formulario de Contacto -->
+<app-contacto></app-contacto>

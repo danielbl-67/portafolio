@@ -1,127 +1,150 @@
-<section id="contacto" class="contact-wrapper" aria-labelledby="contact-title">
-  <div class="contact-container">
+<section id="contacto" class="card-layout contact-card animate-fade-in" aria-labelledby="contact-title">
+  
+  <header class="contact-header">
+    <span class="contact-kicker">Contacto Directo</span>
+    <h2 id="contact-title">Hablemos en privado</h2>
+    <p class="contact-subtitle">
+      ¿Tienes una propuesta técnica, una idea de negocio o requieres desarrollo multiplataforma?
+    </p>
+  </header>
 
-    <div class="contact-header">
-      <span class="contact-kicker">Contacto Directo</span>
-      <h2 id="contact-title">Hablemos en privado</h2>
-      <p class="contact-subtitle">
-        ¿Tienes una propuesta técnica, una idea de negocio o requieres desarrollo multiplataforma?
-      </p>
-    </div>
-
-    <!-- Mensaje de éxito al enviar mediante Web3Forms -->
-    <div *ngIf="enviadoExito" class="success-alert" role="alert">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  @if (enviadoExito()) {
+    <div class="alert success" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       <span>¡Mensaje recibido con éxito! Me pondré en contacto contigo a la brevedad.</span>
     </div>
+  }
 
-    <div class="contact-grid">
-      <!-- Columna Izquierda: Accesos Rápidos y Ubicación -->
-      <div class="contact-details">
-        <div class="direct-cards">
-          <!-- WhatsApp -->
-          <a href="https://wa.me/34638676954?text=Hola%20Daniel%2C%20vengo%20desde%20tu%20portafolio%20burdallo.dev" target="_blank" rel="noopener noreferrer" class="direct-card whatsapp">
-            <div class="direct-icon">💬</div>
-            <div class="direct-info">
-              <span class="direct-label">WhatsApp Directo</span>
-              <strong class="direct-value">Abrir conversación</strong>
-            </div>
-          </a>
+  @if (errorEnvio()) {
+    <div class="alert error" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Hubo un inconveniente al enviar el mensaje. Escríbeme directamente por WhatsApp.</span>
+    </div>
+  }
 
-          <!-- Llamada -->
-          <a href="tel:+34600000000" class="direct-card phone">
-            <div class="direct-icon">📞</div>
-            <div class="direct-info">
-              <span class="direct-label">Teléfono</span>
-              <strong class="direct-value">+34 638 67 69 54</strong>
-            </div>
-          </a>
+  <div class="contact-grid">
+    <!-- Columna Izquierda: Canales Directos -->
+    <aside class="contact-details">
+      <div class="direct-cards">
+        
+        <!-- WhatsApp -->
+        <a href="https://wa.me/34638676954?text=Hola%20Daniel%2C%20vengo%20desde%20tu%20portafolio%20burdallo.dev" target="_blank" rel="noopener noreferrer" class="direct-card whatsapp">
+          <div class="direct-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div class="direct-info">
+            <span class="direct-label">WhatsApp Directo</span>
+            <strong class="direct-value">Abrir conversación</strong>
+          </div>
+          <span class="direct-arrow">→</span>
+        </a>
 
-          <!-- GitHub / Repositorios -->
-          <a href="https://github.com/danielbl-67" target="_blank" rel="noopener noreferrer" class="direct-card github">
-            <div class="direct-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            </div>
-            <div class="direct-info">
-              <span class="direct-label">GitHub</span>
-              <strong class="direct-value">github.com/danielbl-67</strong>
-            </div>
-          </a>
+        <!-- Teléfono -->
+        <a href="tel:+34638676954" class="direct-card phone">
+          <div class="direct-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="direct-info">
+            <span class="direct-label">Teléfono</span>
+            <strong class="direct-value">+34 638 67 69 54</strong>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/danielbl-67" target="_blank" rel="noopener noreferrer" class="direct-card github">
+          <div class="direct-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </div>
+          <div class="direct-info">
+            <span class="direct-label">GitHub</span>
+            <strong class="direct-value">github.com/danielbl-67</strong>
+          </div>
+        </a>
+      </div>
+
+      <!-- Tarjeta de Ubicación con mapa en tema oscuro -->
+      <div class="location-card">
+        <div class="location-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a6 6 0 0 1 12 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Espartinas, Sevilla (España)</span>
         </div>
-
-        <!-- Ubicación / Mapa de referencia -->
         <div class="map-box">
           <iframe 
             title="Ubicación geográfica"
             class="map-frame"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101408.2343940173!2d-6.052445!3d37.3886303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c1114be6291%3A0x34f001628c69a42!2sSevilla!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
-            allowfullscreen="" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50714.28639556819!2d-6.160166946026541!3d37.38202534575992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126ebf8bcf1bb5%3A0x40463fd8ca19b20!2s41807%20Espartinas%2C%20Sevilla!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" 
             loading="lazy">
           </iframe>
         </div>
       </div>
+    </aside>
 
-      <!-- Columna Derecha: Formulario Asíncrono conectado a Web3Forms -->
-      <div class="form-container">
+    <!-- Columna Derecha: Formulario Oscuro y Elegante -->
+    <div class="form-wrapper-dark">
+      <div class="form-title-group">
         <h3>Envíame un mensaje</h3>
-        
-        <form (ngSubmit)="enviarMensaje()" class="contact-form">
-          <div class="field-group">
-            <label for="nombre">Nombre o Empresa</label>
-            <input 
-              id="nombre"
-              type="text" 
-              name="nombre" 
-              [(ngModel)]="datosContacto.nombre" 
-              required 
-              placeholder="Ej: Daniel Gómez" 
-            />
-          </div>
-
-          <div class="field-group">
-            <label for="email">Correo Electrónico</label>
-            <input 
-              id="email"
-              type="email" 
-              name="email" 
-              [(ngModel)]="datosContacto.email" 
-              required 
-              placeholder="tu@email.com" 
-            />
-          </div>
-
-          <div class="field-group">
-            <label for="asunto">Asunto</label>
-            <input 
-              id="asunto"
-              type="text" 
-              name="asunto" 
-              [(ngModel)]="datosContacto.asunto" 
-              required 
-              placeholder="Ej: Consulta sobre desarrollo de App Móvil o Web" 
-            />
-          </div>
-
-          <div class="field-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea 
-              id="mensaje"
-              name="mensaje" 
-              rows="4" 
-              [(ngModel)]="datosContacto.mensaje" 
-              required 
-              placeholder="Cuéntame sobre la idea, objetivos y alcance..."
-            ></textarea>
-          </div>
-
-          <button type="submit" [disabled]="enviando" class="submit-btn">
-            <span *ngIf="!enviando">Enviar Mensaje</span>
-            <span *ngIf="enviando">Procesando mensaje...</span>
-            <svg *ngIf="!enviando" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-        </form>
+        <p>Respondo habitualmente en menos de 24 horas laborables.</p>
       </div>
-    </div>
+      
+      <form (ngSubmit)="enviarMensaje()" class="contact-form">
+        <div class="field-group">
+          <label for="nombre">Nombre o Empresa</label>
+          <input 
+            id="nombre"
+            type="text" 
+            name="nombre" 
+            [(ngModel)]="datosContacto.nombre" 
+            required 
+            placeholder="Ej: Daniel Gómez" 
+          />
+        </div>
 
+        <div class="field-group">
+          <label for="email">Correo Electrónico</label>
+          <input 
+            id="email"
+            type="email" 
+            name="email" 
+            [(ngModel)]="datosContacto.email" 
+            required 
+            placeholder="tu@email.com" 
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="asunto">Asunto</label>
+          <input 
+            id="asunto"
+            type="text" 
+            name="asunto" 
+            [(ngModel)]="datosContacto.asunto" 
+            required 
+            placeholder="Ej: Consulta sobre desarrollo de App Móvil o Web" 
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea 
+            id="mensaje"
+            name="mensaje" 
+            rows="4" 
+            [(ngModel)]="datosContacto.mensaje" 
+            required 
+            placeholder="Cuéntame sobre la idea, objetivos y alcance..."
+          ></textarea>
+        </div>
+
+        <button type="submit" [disabled]="enviando()" class="submit-btn">
+          @if (!enviando()) {
+            <span>Enviar Mensaje</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          } @else {
+            <span>Procesando mensaje...</span>
+          }
+        </button>
+      </form>
+    </div>
   </div>
+
 </section>

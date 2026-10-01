@@ -1,142 +1,142 @@
-
-:host {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  display: block;
-  color: #f3f4f6;
-  padding: 2rem 0;
+.tech-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.card-layout {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Cabecera principal de la sección de tecnologías */
-.main-card-header {
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #1e2530;
-  padding-bottom: 0.5rem;
-}
-
-.header-title-wrapper {
+.section-title-wrapper {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 0.65rem;
 }
 
-.main-header-icon {
-  color: #818cf8;
-}
-
-.main-card-header h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #f8fafc;
+.section-title-wrapper h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
   margin: 0;
+  color: #ffffff;
+}
+
+.header-icon {
+  color: var(--brand-blue);
 }
 
 .subtitle-text {
-  color: #94a3b8;
-  font-size: 1.05rem;
-  margin: 0;
-  padding-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: -0.5rem 0 0.5rem;
 }
 
-/* Rejilla adaptable de tarjetas técnicas */
-.tech-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
+/* Sub-bloque metodología */
+.methodology-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 1.25rem;
 }
 
-/* Tarjeta base de cada bloque técnico */
-.tech-mini-card {
-  background-color: #0b0f19;
-  border: 1px solid #1f293d;
-  border-radius: 16px;
-  padding: 1.75rem;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
-  box-sizing: border-box;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.tabs-header {
   display: flex;
-  flex-direction: column;
-}
-
-/* Efecto hover suave coordinado con el porfolio */
-.tech-mini-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.6);
-}
-
-/* Cabecera interna de cada tarjeta */
-.mini-card-title {
-  display: flex;
-  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
-.card-icon {
-  color: #38bdf8;
-  flex-shrink: 0;
-}
-
-.mini-card-title h3 {
-  color: #f8fafc;
-  font-size: 1.15rem;
+.tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
+  font-size: 0.85rem;
   font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.01em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Contenedor flexible de etiquetas técnicas */
-.tech-pills-container {
+.tab-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--brand-blue);
+}
+
+.tab-body h3 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0 0 0.4rem;
+}
+
+.tab-body p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.points-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.tech-pill {
+.point-badge {
+  font-size: 0.75rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Grilla de Tecnologías */
+.tech-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+}
+
+.tech-mini-card {
   background: rgba(255, 255, 255, 0.02);
-  color: #e5e7eb;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 1.15rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Resalte sutil al pasar el ratón por una tecnología */
-.tech-pill:hover {
-  background: rgba(56, 189, 248, 0.05);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.2);
+.tech-mini-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-card-hover);
 }
 
-/* Variante estética para la tarjeta de SMR */
 .bonus-card {
-  border-color: rgba(129, 140, 248, 0.15);
+  border-left: 3px solid var(--brand-blue);
 }
 
-.bonus-card .card-icon {
-  color: #818cf8;
+.mini-card-title h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
 }
 
-.tech-pill.Special:hover {
-  background: rgba(129, 140, 248, 0.05);
-  color: #818cf8;
-  border-color: rgba(129, 140, 248, 0.2);
+.tech-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
-/* Ajustes responsivos para pantallas pequeñas */
-@media (max-width: 480px) {
-  .tech-cards-grid {
-    grid-template-columns: 1fr;
-  }
+.tech-pill {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+
+.tech-pill.special {
+  color: var(--brand-blue);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
 }

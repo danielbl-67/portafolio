@@ -1,17 +1,18 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './contacto.html',
-  styleUrls: ['./contacto.css']
+  styleUrls: ['./contacto.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactoComponent implements OnInit {
-  private http = inject(HttpClient);
+export class ContactoComponent {
+  // Clave pública de Web3Forms
+  private readonly ACCESS_KEY = 'TU_ACCESS_KEY_AQUI';
 
   datosContacto = {
     nombre: '',
@@ -20,48 +21,42 @@ export class ContactoComponent implements OnInit {
     mensaje: ''
   };
 
-  enviando: boolean = false;
-  enviadoExito: boolean = false;
-  anioActual: number = 2026;
+  readonly enviando = signal<boolean>(false);
+  readonly enviadoExito = signal<boolean>(false);
+  readonly errorEnvio = signal<boolean>(false);
 
-  ngOnInit(): void {
-    this.anioActual = new Date().getFullYear();
-  }
+  async enviarMensaje(): Promise<void> {
+    this.enviando.set(true);
+    this.errorEnvio.set(false);
 
-  enviarMensaje(): void {
-    if (!this.datosContacto.nombre || !this.datosContacto.email) {
-      return;
-    }
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: this.ACCESS_KEY,
+          name: this.datosContacto.nombre,
+          email: this.datosContacto.email,
+          subject: this.datosContacto.asunto,
+          message: this.datosContacto.mensaje
+        })
+      });
 
-    this.enviando = true;
+      const resultado = await response.json();
 
-    const payload = {
-      access_key: 'd21208cb-ac0b-4ac9-82e9-9322d35b63c1',
-      name: this.datosContacto.nombre,
-      email: this.datosContacto.email,
-      subject: `Portafolio: ${this.datosContacto.asunto || 'Nuevo Contacto'}`,
-      message: this.datosContacto.mensaje
-    };
-
-    this.http.post('https://api.web3forms.com/submit', payload).subscribe({
-      next: () => {
-        this.enviando = false;
-        this.enviadoExito = true;
-
-        this.datosContacto = {
-          nombre: '',
-          email: '',
-          asunto: '',
-          mensaje: ''
-        };
-
-        setTimeout(() => (this.enviadoExito = false), 5000);
-      },
-      error: (err) => {
-        this.enviando = false;
-        alert('Hubo un error al enviar el mensaje. Por favor, utiliza el botón de WhatsApp o Email Directo.');
-        console.error(err);
+      if (resultado.success) {
+        this.enviadoExito.set(true);
+        this.datosContacto = { nombre: '', email: '', asunto: '', mensaje: '' };
+      } else {
+        this.errorEnvio.set(true);
       }
-    });
+    } catch {
+      this.errorEnvio.set(true);
+    } finally {
+      this.enviando.set(false);
+    }
   }
 }

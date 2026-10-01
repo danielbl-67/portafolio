@@ -1,174 +1,79 @@
-import { Component } from '@angular/core';
-
-type BloqueEnfoque = 'frontend' | 'backend';
-
-type EstadoProyecto = 'empezado' | 'en-proceso' | 'terminado';
-type FiltroProyecto = 'todos' | EstadoProyecto;
-
-interface TarjetaEnfoque {
-  titulo: string;
-  descripcion: string;
-}
-
-interface BloqueEnfoqueContenido {
-  value: BloqueEnfoque;
-  label: string;
-  kicker: string;
-  tituloPrincipal: string;
-  descripcionPrincipal: string;
-  tarjetas: TarjetaEnfoque[];
-}
+import { Component, signal, computed, ChangeDetectionStrategy } from '@angular/core';
+import { SobremiComponent } from '../sobremi.component/sobremi.component';
+import { TecnologiasComponent } from '../tecnologias.component/tecnologias.component';
+import { ContactoComponent } from '../contacto/contacto';
 
 interface Proyecto {
   title: string;
   subtitle: string;
   description: string;
+  anio: number;
+  estado: 'desarrollo' | 'produccion' | 'destacado';
   technologies: string[];
-  enlaceRepositorio: string;
   enlaceDemo?: string;
-  tipoIcono: 'movil' | 'barber' | 'codigo' | 'web';
-  estado: EstadoProyecto;
-  anio: string;
+  enlaceRepositorio: string;
+  
 }
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [],
+  imports: [SobremiComponent, TecnologiasComponent, ContactoComponent],
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InicioComponent {
-  bloqueEnfoqueActivo: BloqueEnfoque = 'frontend';
-  filtroActivo: FiltroProyecto = 'todos';
+  readonly filtroActivo = signal<string>('todos');
 
-  bloquesEnfoque: BloqueEnfoqueContenido[] = [
+  readonly filtrosProyectos = [
+    { label: 'Todos', value: 'todos' },
+    { label: 'Producción', value: 'produccion' },
+    { label: 'En desarrollo', value: 'desarrollo' }
+  ];
+
+  readonly proyectos: Proyecto[] = [
     {
-      value: 'frontend',
-      label: 'Frontend',
-      kicker: 'Mi obsesión visual',
-      tituloPrincipal: 'Interfaces fluidas y pixel-perfect',
-      descripcionPrincipal:
-        'Me obsesiona el diseño limpio, las microinteracciones y las interfaces modernas. Una app puede ser potente, pero si no entra por los ojos, el usuario se va.',
-      tarjetas: [
-        {
-          titulo: 'Estética y modernidad',
-          descripcion:
-            'Busco composiciones limpias, jerarquía visual clara y detalles que hagan que la experiencia se sienta cuidada desde el primer vistazo.'
-        },
-        {
-          titulo: 'Experiencia de usuario primero',
-          descripcion:
-            'Aplico lógica de DAM para simplificar flujos complejos y diseñar pantallas donde el usuario entiende qué hacer en menos de un segundo.'
-        },
-        {
-          titulo: 'Ecosistema web moderno',
-          descripcion:
-            'Domino frameworks actuales, pero también entiendo cómo renderiza el navegador y me adapto rápido a cualquier librería o stack de frontend.'
-        }
-      ]
+      title: 'Fit Moment',
+      subtitle: 'Web oficial de Centro Integral de Rendimiento y Salud ',
+      description: 'Landing y catálogo transaccional con sistema de solicitud de citas directas a WhatsApp.',
+      anio: 2026,
+      estado: 'produccion',
+      technologies: ['Angular', 'TypeScript', 'CSS', 'WhatsApp API'],
+      enlaceDemo: 'https://fitmoment.vercel.app/',
+      enlaceRepositorio: 'https://github.com/danielbl-67/fitmoment'
+    },
+     {
+      title: 'Ainoamoreno_nt',
+      subtitle: 'Landing page oficial de nutricion',
+      description: 'Landing y catálogo transaccional con sistema de solicitud de citas directas a WhatsApp.',
+      anio: 2026,
+      estado: 'produccion',
+      technologies: ['Angular', 'TypeScript', 'CSS', 'WhatsApp API'],
+      enlaceDemo: 'https://ainoamorent.vercel.app/',
+      enlaceRepositorio: 'https://github.com/danielbl-67/ainoamore_nt'
     },
     {
-      value: 'backend',
-      label: 'Backend',
-      kicker: 'Mi ADN de DAM',
-      tituloPrincipal: 'Robustez, datos y arquitectura sólida',
-      descripcionPrincipal:
-        'Mi base en DAM me enseñó a construir soluciones que escalen con orden: APIs claras, bases de datos bien pensadas y lógica limpia que aguanta el crecimiento.',
-      tarjetas: [
-        {
-          titulo: 'Robustez y código limpio',
-          descripcion:
-            'Me apoyo en POO, patrones de diseño y arquitecturas limpias para mantener cada pieza entendible, reutilizable y fácil de evolucionar.'
-        },
-        {
-          titulo: 'Modelado y optimización SQL',
-          descripcion:
-            'No le tengo miedo a las bases de datos relacionales complejas. Diseño esquemas eficientes, relaciones sólidas y consultas optimizadas para cuidar el rendimiento.'
-        },
-        {
-          titulo: 'Agnóstico al lenguaje',
-          descripcion:
-            'Entiendo los fundamentos del backend: APIs REST, seguridad JWT y flujo de datos. Eso me permite adaptarme a Node.js, Java/Spring Boot o cualquier stack servidor.'
-        }
-      ]
+      title: 'BaseBoss',
+      subtitle: 'Gestión Comercial para Pymes',
+      description: 'App Android para autónomos: emisión de facturas/presupuestos PDF y catálogo local.',
+      anio: 2026,
+      estado: 'desarrollo',
+      technologies: ['Android Studio', 'Kotlin', 'SQLite', 'iTextPDF'],
+      enlaceRepositorio: 'https://github.com/danielbl-67'
     }
   ];
 
-  filtrosProyectos: { value: FiltroProyecto; label: string }[] = [
-    { value: 'todos', label: 'Todos' },
-    { value: 'terminado', label: 'Terminados' },
-    { value: 'en-proceso', label: 'En proceso' },
-    { value: 'empezado', label: 'Empezados' }
-  ];
+  readonly proyectosFiltrados = computed(() => {
+    const f = this.filtroActivo();
+    return f === 'todos' ? this.proyectos : this.proyectos.filter(p => p.estado === f);
+  });
 
-  readonly etiquetasEstado: Record<EstadoProyecto, string> = {
-    empezado: 'Empezado',
-    'en-proceso': 'En proceso',
-    terminado: 'Terminado'
-  };
-
-  listaProyectos: Proyecto[] = [
-    {
-      title: 'GYMZY',
-      subtitle: 'PROYECTO FINAL (DAM)',
-      description: 'Aplicación móvil enfocada al sector fitness con herramientas para usuarios, entrenadores personales y nutricionistas autónomos.',
-      technologies: ['Java', 'Spring Boot', 'Android Studio', 'Firebase'],
-      enlaceRepositorio: 'https://github.com/danielbl-67/gymzy',
-      tipoIcono: 'movil',
-      estado: 'en-proceso',
-      anio: '2026'
-    },
-    {
-      title: 'PELUQUERÍA DANIEL',
-      subtitle: 'GESTIÓN DE SERVICIOS (Prueba de concepto)',
-      description: 'Plataforma para reservar citas en tiempo real, administrar agendas y organizar servicios para peluquerías.',
-      technologies: ['Java', 'Spring Boot', 'H2 Database', 'Web'],
-      enlaceRepositorio: 'https://github.com/danielbl-67/peluqueria',
-      enlaceDemo: 'https://peluqueria-daniel.vercel.app',
-      tipoIcono: 'barber',
-      estado: 'en-proceso',
-      anio: '2026'
-    },
-    {
-      title: 'REAPER BOT',
-      subtitle: 'ARQUITECTURA Y LÓGICA DE BOT',
-      description: 'Módulo backend centrado en lógica pura y patrones de diseño multiplataforma estructurados bajo estándares de DAM.',
-      technologies: ['Java', 'Node.js', 'Bot', 'Discord'],
-      enlaceRepositorio: 'https://github.com/danielbl-67/reaper',
-      tipoIcono: 'codigo',
-      estado: 'empezado',
-      anio: '2026'
-    }
-  ];
-
-  get proyectosFiltrados(): Proyecto[] {
-    if (this.filtroActivo === 'todos') {
-      return this.listaProyectos;
-    }
-    return this.listaProyectos.filter((proyecto) => proyecto.estado === this.filtroActivo);
+  establecerFiltro(f: string): void {
+    this.filtroActivo.set(f);
   }
 
-  establecerFiltroProyecto(filtro: FiltroProyecto): void {
-    this.filtroActivo = filtro;
-  }
-
-  obtenerEtiquetaEstado(estado: EstadoProyecto): string {
-    return this.etiquetasEstado[estado];
-  }
-
-  obtenerCantidadEstado(filtro: FiltroProyecto): number {
-    if (filtro === 'todos') {
-      return this.listaProyectos.length;
-    }
-    return this.listaProyectos.filter((proyecto) => proyecto.estado === filtro).length;
-  }
-
-  establecerBloqueEnfoque(bloque: BloqueEnfoque): void {
-    this.bloqueEnfoqueActivo = bloque;
-  }
-
-  obtenerBloqueEnfoqueActivo(): BloqueEnfoqueContenido {
-    return this.bloquesEnfoque.find((bloque) => bloque.value === this.bloqueEnfoqueActivo) ?? this.bloquesEnfoque[0];
+  obtenerCantidad(estado: string): number {
+    return estado === 'todos' ? this.proyectos.length : this.proyectos.filter(p => p.estado === estado).length;
   }
 }

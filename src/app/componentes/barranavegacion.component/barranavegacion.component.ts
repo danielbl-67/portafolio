@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 @Component({
   selector: 'app-barranavegacion',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './barranavegacion.component.html',
-  styleUrls: ['./barranavegacion.component.css']
+  styleUrls: ['./barranavegacion.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BarranavegacionComponent {
-  isMenuOpen = false;
+  readonly menuAbierto = signal(false);
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  readonly enlaces = [
+    { target: '#sobre-mi', texto: 'Sobre mí' },
+    { target: '#habilidades', texto: 'Habilidades' },
+    { target: '#proyectos', texto: 'Proyectos' },
+    { target: '#contacto', texto: 'Contacto' }
+  ];
+
+  alternarMenu(): void {
+    this.menuAbierto.update(v => !v);
   }
 
-  closeMenu(): void {
-    this.isMenuOpen = false;
+  cerrarMenu(): void {
+    this.menuAbierto.set(false);
   }
 }

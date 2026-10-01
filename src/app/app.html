@@ -1,21 +1,21 @@
-<div class="portfolio-container">
+<div class="layout-app">
   <app-barranavegacion></app-barranavegacion>
 
-  <main class="container">
-    <section id="inicio">
-      <app-inicio></app-inicio>
-    </section>
-
-    <section id="sobremi">
-      <app-sobremi></app-sobremi>
-    </section>
-
-    <section id="tecnologias">
-      <app-tecnologias></app-tecnologias>
-    </section>
-
-    <section id="contacto">
-      <app-contacto></app-contacto>
-    </section>
+  <main class="main-content">
+    <router-outlet></router-outlet>
   </main>
+
+  <footer class="app-footer">
+    <div class="footer-wrapper">
+      <div class="footer-copy">
+        <span>© {{ anioActual }} burdallo.dev</span>
+        <span class="footer-subtext">Desarrollo Multiplataforma • Espartinas, Sevilla</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/danielbl-67" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/danielburdallolopez" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:burdallolopez67@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 </div>
