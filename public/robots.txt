@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://burdallo.dev/sitemap.xml
+Sitemap: https://burdallodev.vercel.app/sitemap.xml
