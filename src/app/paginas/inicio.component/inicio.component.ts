@@ -54,13 +54,31 @@ export class InicioComponent {
       enlaceRepositorio: 'https://github.com/danielbl-67/ainoamore_nt'
     },
     {
+      title: 'Peluqueria Ejemplo',
+      subtitle: 'Pagina web de una peluqueria',
+      description: 'Pagina Web de como quedaria para las reservas',
+      anio: 2026,
+      estado: 'desarrollo',
+      technologies: ['Angular', 'TypeScript', 'CSS', 'WhatsApp API'],
+      enlaceRepositorio: 'https://github.com/danielbl-67/peluqueria'
+    },
+    {
       title: 'BaseBoss',
       subtitle: 'Gestión Comercial para Pymes',
       description: 'App Android para autónomos: emisión de facturas/presupuestos PDF y catálogo local.',
       anio: 2026,
       estado: 'desarrollo',
       technologies: ['Android Studio', 'Kotlin', 'SQLite', 'iTextPDF'],
-      enlaceRepositorio: 'https://github.com/danielbl-67'
+      enlaceRepositorio: 'https://github.com/danielbl-67/BaseBoss'
+    },
+    {
+      title: 'Reaper',
+      subtitle: 'BOT de discord',
+      description: 'Bot de discord para revisar el estado de un servidor de videojuegos',
+      anio: 2026,
+      estado: 'desarrollo',
+      technologies: ['VSCode', 'JavaScript', 'Node.js'],
+      enlaceRepositorio: 'https://github.com/danielbl-67/reaper'
     }
   ];
 
